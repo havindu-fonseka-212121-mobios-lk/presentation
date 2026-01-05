@@ -115,13 +115,13 @@ const PrizeGivingCeremony = () => {
     }
   };
 
+    const calculateSessionTotal = (courses) => courses.reduce((total, course) => total + course.studentCount, 0);
+
 
   useEffect(() => {
-    // Fetch courses when filters change and sessions are loaded
-    if (sessionsLoaded) {
-      fetchCourses();
-    }
-  }, [filters.examYear, filters.examModeId, filters.examTypeId, filters.gradeId, sessionsLoaded]);
+    // Fetch courses when filters change
+    fetchCourses();
+  }, [filters.examYear, filters.examModeId, filters.examTypeId, filters.gradeId]);
 
   useEffect(() => {
     setFilteredAvailableCourses(availableCourses.filter(course =>

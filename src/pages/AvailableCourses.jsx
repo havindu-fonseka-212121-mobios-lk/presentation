@@ -1,6 +1,7 @@
 import { Box, Typography, Divider, CircularProgress } from '@mui/material';
 import { getHeights } from './constants';
 import { useDroppable } from '@dnd-kit/core';
+import DraggableCourse from './DraggableCourse';
 
 
 // Droppable Container Component
