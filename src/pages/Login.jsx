@@ -3,7 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../reducers/auth.reducer';
 import authService from '../services/auth.service';
-import './Login.css';
+import { 
+  Box, 
+  Container, 
+  Paper, 
+  TextField, 
+  Button, 
+  Typography, 
+  Alert 
+} from '@mui/material';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -43,42 +51,86 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        // background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      }}
+    >
+      <Container maxWidth="xs">
+        <Paper
+          elevation={10}
+          sx={{
+            p: 4,
+            borderRadius: 2,
+          }}
+        >
+          <Typography variant="h5" component="h2" align="center" gutterBottom sx={{ mb: 3, color: '#333' }}>
+            Loginwkjebfk
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
               id="email"
+              label="Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              required
             />
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
+            
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
               type="password"
               id="password"
+              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
-              required
             />
-          </div>
 
-          {error && <div className="error-message">{error}</div>}
-          
-          <button type="submit" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
-          </button>
-        </form>
-      </div>
-    </div>
+            {error && (
+              <Alert severity="error" sx={{ mt: 2 }}>
+                {error}
+              </Alert>
+            )}
+            
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              disabled={loading}
+              sx={{
+                mt: 3,
+                py: 1.5,
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                fontWeight: 600,
+                '&:hover': {
+                  background: 'linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%)',
+                  transform: 'translateY(-2px)',
+                },
+                '&:disabled': {
+                  opacity: 0.6,
+                },
+              }}
+            >
+              {loading ? 'Logging in...' : 'Login'}
+            </Button>
+          </Box>
+        </Paper>
+      </Container>
+    </Box>
   );
 };
 
