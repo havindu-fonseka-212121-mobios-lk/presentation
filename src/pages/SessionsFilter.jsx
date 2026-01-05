@@ -237,7 +237,6 @@ const SessionsFilter = ({
       <Paper 
         sx={{ 
           p: 3, 
-          border: '2px solid #B71D18',
           borderRadius: '12px',
           backgroundColor: '#ffffff',
           boxShadow: '0 2px 8px rgba(183, 29, 24, 0.1)',
@@ -247,9 +246,9 @@ const SessionsFilter = ({
           variant="h5" 
           sx={{ 
             mb: 3, 
-            color: '#B71D18', 
+            color: '#1976D2', 
             fontWeight: 'bold',
-            borderBottom: '2px solid #B71D18',
+            borderBottom: '2px solid #1976D2',
             pb: 2
           }}
         >
@@ -284,14 +283,14 @@ const SessionsFilter = ({
                       sx={{
                         '& .MuiOutlinedInput-root': {
                           '&:hover fieldset': {
-                            borderColor: '#B71D18',
+                            borderColor: '#1976D2',
                           },
                           '&.Mui-focused fieldset': {
-                            borderColor: '#B71D18',
+                            borderColor: '#1976D2',
                           },
                         },
                         '& .MuiInputLabel-root.Mui-focused': {
-                          color: '#B71D18',
+                          color: '#1976D2',
                         },
                       }}
                     />
@@ -331,14 +330,14 @@ const SessionsFilter = ({
                       sx={{
                         '& .MuiOutlinedInput-root': {
                           '&:hover fieldset': {
-                            borderColor: '#B71D18',
+                            borderColor: '#1976D2',
                           },
                           '&.Mui-focused fieldset': {
-                            borderColor: '#B71D18',
+                            borderColor: '#1976D2',
                           },
                         },
                         '& .MuiInputLabel-root.Mui-focused': {
-                          color: '#B71D18',
+                          color: '#1976D2',
                         },
                       }}
                     />
@@ -378,14 +377,14 @@ const SessionsFilter = ({
                       sx={{
                         '& .MuiOutlinedInput-root': {
                           '&:hover fieldset': {
-                            borderColor: '#B71D18',
+                            borderColor: '#1976D2',
                           },
                           '&.Mui-focused fieldset': {
-                            borderColor: '#B71D18',
+                            borderColor: '#1976D2',
                           },
                         },
                         '& .MuiInputLabel-root.Mui-focused': {
-                          color: '#B71D18',
+                          color: '#1976D2',
                         },
                       }}
                     />
@@ -439,14 +438,14 @@ const SessionsFilter = ({
                       sx={{
                         '& .MuiOutlinedInput-root': {
                           '&:hover fieldset': {
-                            borderColor: '#B71D18',
+                            borderColor: '#1976D2',
                           },
                           '&.Mui-focused fieldset': {
-                            borderColor: '#B71D18',
+                            borderColor: '#1976D2',
                           },
                         },
                         '& .MuiInputLabel-root.Mui-focused': {
-                          color: '#B71D18',
+                          color: '#1976D2',
                         },
                       }}
                     />
@@ -485,14 +484,14 @@ const SessionsFilter = ({
                       sx={{
                         '& .MuiOutlinedInput-root': {
                           '&:hover fieldset': {
-                            borderColor: '#B71D18',
+                            borderColor: '#1976D2',
                           },
                           '&.Mui-focused fieldset': {
-                            borderColor: '#B71D18',
+                            borderColor: '#1976D2',
                           },
                         },
                         '& .MuiInputLabel-root.Mui-focused': {
-                          color: '#B71D18',
+                          color: '#1976D2',
                         },
                       }}
                     />
@@ -540,14 +539,14 @@ const SessionsFilter = ({
                   sx={{
                     '& .MuiOutlinedInput-root': {
                       '&:hover fieldset': {
-                        borderColor: '#B71D18',
+                        borderColor: '#1976D2',
                       },
                       '&.Mui-focused fieldset': {
-                        borderColor: '#B71D18',
+                        borderColor: '#1976D2',
                       },
                     },
                     '& .MuiInputLabel-root.Mui-focused': {
-                      color: '#B71D18',
+                      color: '#1976D2',
                     },
                   }}
                 />

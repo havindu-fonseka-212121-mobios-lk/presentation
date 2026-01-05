@@ -31,16 +31,15 @@ const AvailableCourses = ({ availableCourses, sessionCount, loading = false, tot
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                border: '2px solid #B71D18',
                 borderRadius: '12px',
                 padding: '20px',
                 backgroundColor: '#ffffff',
                 boxShadow: '0 2px 8px rgba(183, 29, 24, 0.1)',
             }}>
-                <Typography variant="h5" sx={{ textAlign: 'center', color: '#B71D18', fontWeight: 'bold', mb: 2 }}>
+                <Typography variant="h5" sx={{ textAlign: 'center', color: '#1976D2', fontWeight: 'bold', mb: 2 }}>
                     Available Courses
                 </Typography>
-                <Divider sx={{ mb: 3, borderColor: '#B71D18', borderWidth: 1 }} />
+                <Divider sx={{ mb: 3, borderColor: '#1976D2', borderWidth: 1 }} />
 
                 <DroppableContainer id="available-courses">
                     <Box sx={{
@@ -65,7 +64,7 @@ const AvailableCourses = ({ availableCourses, sessionCount, loading = false, tot
                             borderRadius: '4px',
                         },
                         '&::-webkit-scrollbar-thumb': {
-                            background: '#B71D18',
+                            background: '#1976D2',
                             borderRadius: '4px',
                         },
                         '&::-webkit-scrollbar-thumb:hover': {
@@ -82,7 +81,7 @@ const AvailableCourses = ({ availableCourses, sessionCount, loading = false, tot
                                 width: '100%',
                                 gap: 2
                             }}>
-                                <CircularProgress size={40} sx={{ color: '#B71D18' }} />
+                                <CircularProgress size={40} sx={{ color: '#1976D2' }} />
                                 <Typography variant="body2" sx={{ color: '#666', textAlign: 'center' }}>
                                     Loading available courses...
                                 </Typography>
