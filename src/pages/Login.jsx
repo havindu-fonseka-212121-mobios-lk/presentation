@@ -69,7 +69,7 @@ const Login = () => {
           }}
         >
           <Typography variant="h5" component="h2" align="center" gutterBottom sx={{ mb: 3, color: '#333' }}>
-            Loginwkjebfk
+            login
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate>
             <TextField

@@ -1,4 +1,4 @@
-import store from 'src/app/store';
+import store from '../app/store';
 import axios, { HttpStatusCode } from 'axios';
 import { logoutAction } from '../reducers/auth.reducer';
 
@@ -51,6 +51,20 @@ export const apiPost = async ({ path, requestBody, header = {} }) => {
     .post(path, requestBody, {
       headers: {
         Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => handleResponse(response))
+    .catch((err) => handleError(err));
+};
+
+export const apiGet = async ({ path, header = {} }) => {
+  const { token: accessToken } = store.getState().auth;
+
+  return http
+    .get(path, {
+      headers: {
+        ...header,
+        Authorization: `Bearer ${accessToken}`,
       },
     })
     .then((response) => handleResponse(response))
