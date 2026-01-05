@@ -26,34 +26,51 @@ const DroppableContainer = ({ id, children }) => {
 };
 
 const AvailableCourses = ({ availableCourses, sessionCount, loading = false, totalCourses = 0 }) => {
-    const heights = getHeights(sessionCount);
     
     return (
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                border: '1px solid #B71D18',
-                borderRadius: '8px',
-                padding: '15px',
-                backgroundColor: '#f9f9f9',
-                height: heights.availableCourses,
+                border: '2px solid #B71D18',
+                borderRadius: '12px',
+                padding: '20px',
+                backgroundColor: '#ffffff',
+                boxShadow: '0 2px 8px rgba(183, 29, 24, 0.1)',
             }}>
-                <Typography variant="h6" sx={{ textAlign: 'center', color: '#B71D18', fontWeight: 'bold' }}>
+                <Typography variant="h5" sx={{ textAlign: 'center', color: '#B71D18', fontWeight: 'bold', mb: 2 }}>
                     Available Courses
                 </Typography>
-                <Divider sx={{ my: 1 }} />
+                <Divider sx={{ mb: 3, borderColor: '#B71D18', borderWidth: 1 }} />
 
                 <DroppableContainer id="available-courses">
                     <Box sx={{
-                        flex: 1,
-                        height: heights.availableCourseList,
-                        borderRadius: '4px',
-                        overflow: 'auto',
-                        scrollbarWidth: 'none', // Firefox
-                        '&::-webkit-scrollbar': {
-                            display: 'none', // Chrome, Safari, Edge
+                        display: 'grid',
+                        gridTemplateColumns: {
+                            xs: '1fr',
+                            sm: 'repeat(2, 1fr)',
+                            md: 'repeat(3, 1fr)',
+                            lg: 'repeat(4, 1fr)',
+                            xl: 'repeat(5, 1fr)',
                         },
-                        msOverflowStyle: 'none', // IE
+                        gap: 2,
+                        maxHeight: '500px',
+                        overflowY: 'auto',
+                        overflowX: 'hidden',
+                        pr: 1,
+                        '&::-webkit-scrollbar': {
+                            width: '8px',
+                        },
+                        '&::-webkit-scrollbar-track': {
+                            background: '#f1f1f1',
+                            borderRadius: '4px',
+                        },
+                        '&::-webkit-scrollbar-thumb': {
+                            background: '#B71D18',
+                            borderRadius: '4px',
+                        },
+                        '&::-webkit-scrollbar-thumb:hover': {
+                            background: '#8B1612',
+                        },
                     }}>
                         {loading ? (
                             <Box sx={{
@@ -62,6 +79,7 @@ const AvailableCourses = ({ availableCourses, sessionCount, loading = false, tot
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 height: '100%',
+                                width: '100%',
                                 gap: 2
                             }}>
                                 <CircularProgress size={40} sx={{ color: '#B71D18' }} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Grid from '@mui/material/Grid';
+import { Box, Grid, Paper, Typography } from '@mui/material';
 import { Autocomplete, TextField, IconButton, InputAdornment } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Controller, useForm } from 'react-hook-form';
@@ -234,20 +234,41 @@ const SessionsFilter = ({
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Grid container spacing={2}>
-        {visibleFields.includes('examYear') && (
-          <Grid item xs={12} sm={4} md={3}>
-            <Controller
-              name="examYear"
-              control={control}
-              rules={{ required: mandatoryKeys.includes('examYear') }}
-              render={({ field }) => (
-                <Autocomplete
-                  fullWidth
-                  {...field}
-                  options={years?.map((year) => ({
-                    label: year?.year,
-                    value: year?.year,
+      <Paper 
+        sx={{ 
+          p: 3, 
+          border: '2px solid #B71D18',
+          borderRadius: '12px',
+          backgroundColor: '#ffffff',
+          boxShadow: '0 2px 8px rgba(183, 29, 24, 0.1)',
+        }}
+      >
+        <Typography 
+          variant="h5" 
+          sx={{ 
+            mb: 3, 
+            color: '#B71D18', 
+            fontWeight: 'bold',
+            borderBottom: '2px solid #B71D18',
+            pb: 2
+          }}
+        >
+          Filter Courses
+        </Typography>
+        <Grid container spacing={3}>
+          {visibleFields.includes('examYear') && (
+            <Grid size={{ xs: 4, sm: 4, md: 3 }}>
+              <Controller
+                name="examYear"
+                control={control}
+                rules={{ required: mandatoryKeys.includes('examYear') }}
+                render={({ field }) => (
+                  <Autocomplete
+                    fullWidth
+                    {...field}
+                    options={years?.map((year) => ({
+                      label: year?.year,
+                      value: year?.year,
                   }))}
                   onChange={(_, value) => {
                     field.onChange(value);
@@ -257,11 +278,21 @@ const SessionsFilter = ({
                     <TextField
                       {...params}
                       label="Year"
-                      size="small"
+                      size="medium"
                       error={!!errors.examYear}
-                      helperText={errors.examYear ? '(Mandatory)' : ''}
-                      FormHelperTextProps={{
-                        style: { color: mandatoryKeys.includes('examYear') ? 'red' : 'inherit' },
+                      helperText={errors.examYear ? 'Required field' : ''}
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          '&:hover fieldset': {
+                            borderColor: '#B71D18',
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: '#B71D18',
+                          },
+                        },
+                        '& .MuiInputLabel-root.Mui-focused': {
+                          color: '#B71D18',
+                        },
                       }}
                     />
                   )}
@@ -272,7 +303,7 @@ const SessionsFilter = ({
         )}
 
         {visibleFields.includes('sessionId') && (
-          <Grid item xs={12} sm={4} md={3}>
+          <Grid size={{ xs: 4, sm: 4, md: 3 }}>
             <Controller
               name="sessionId"
               control={control}
@@ -294,11 +325,21 @@ const SessionsFilter = ({
                     <TextField
                       {...params}
                       label="Session"
-                      size="small"
+                      size="medium"
                       error={!!errors.sessionId}
-                      helperText={errors.sessionId ? '(Mandatory)' : ''}
-                      FormHelperTextProps={{
-                        style: { color: mandatoryKeys.includes('sessionId') ? 'red' : 'inherit' },
+                      helperText={errors.sessionId ? 'Required field' : ''}
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          '&:hover fieldset': {
+                            borderColor: '#B71D18',
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: '#B71D18',
+                          },
+                        },
+                        '& .MuiInputLabel-root.Mui-focused': {
+                          color: '#B71D18',
+                        },
                       }}
                     />
                   )}
@@ -309,7 +350,7 @@ const SessionsFilter = ({
         )}
 
         {visibleFields.includes('examModeId') && (
-          <Grid item xs={12} sm={4} md={3}>
+          <Grid size={{ xs: 4, sm: 4, md: 3 }}>
             <Controller
               name="examModeId"
               control={control}
@@ -331,16 +372,20 @@ const SessionsFilter = ({
                     <TextField
                       {...params}
                       label="Exam Category"
-                      size="small"
+                      size="medium"
                       error={!!errors.examModeId}
-                      helperText={errors.examModeId ? '(Mandatory)' : ''}
-                      FormHelperTextProps={{
-                        style: {
-                          color: errors.examModeId
-                            ? 'red'
-                            : mandatoryKeys.includes('examModeId')
-                              ? 'red'
-                              : 'inherit',
+                      helperText={errors.examModeId ? 'Required field' : ''}
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          '&:hover fieldset': {
+                            borderColor: '#B71D18',
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: '#B71D18',
+                          },
+                        },
+                        '& .MuiInputLabel-root.Mui-focused': {
+                          color: '#B71D18',
                         },
                       }}
                     />
@@ -351,7 +396,7 @@ const SessionsFilter = ({
           </Grid>
         )}
         {visibleFields.includes('examTypeId') && (
-          <Grid item xs={12} sm={4} md={3}>
+          <Grid size={{ xs: 4, sm: 4, md: 3 }}>
             <Controller
               name="examTypeId"
               control={control}
@@ -376,8 +421,9 @@ const SessionsFilter = ({
                       style={{
                         borderLeft:
                           option.mode === 'PRACTICAL'
-                            ? '3px solid #6A0066'
-                            : '3px solid #FF0066',
+                            ? '4px solid #6A0066'
+                            : '4px solid #FF0066',
+                        paddingLeft: '12px',
                       }}
                     >
                       {option.label}
@@ -387,11 +433,21 @@ const SessionsFilter = ({
                     <TextField
                       {...params}
                       label="Exam Subject"
-                      size="small"
+                      size="medium"
                       error={!!errors.examTypeId}
-                      helperText={errors.examTypeId ? '(Mandatory)' : ''}
-                      FormHelperTextProps={{
-                        style: { color: mandatoryKeys.includes('examTypeId') ? 'red' : 'inherit' },
+                      helperText={errors.examTypeId ? 'Required field' : ''}
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          '&:hover fieldset': {
+                            borderColor: '#B71D18',
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: '#B71D18',
+                          },
+                        },
+                        '& .MuiInputLabel-root.Mui-focused': {
+                          color: '#B71D18',
+                        },
                       }}
                     />
                   )}
@@ -401,7 +457,7 @@ const SessionsFilter = ({
           </Grid>
         )}
         {visibleFields.includes('gradeId') && (
-          <Grid item xs={12} sm={4} md={3}>
+          <Grid size={{ xs: 4, sm: 4, md: 3 }}>
             <Controller
               name="gradeId"
               control={control}
@@ -423,11 +479,21 @@ const SessionsFilter = ({
                     <TextField
                       {...params}
                       label="Exam Level/Grade"
-                      size="small"
+                      size="medium"
                       error={!!errors.gradeId}
-                      helperText={errors.gradeId ? '(Mandatory)' : ''}
-                      FormHelperTextProps={{
-                        style: { color: mandatoryKeys.includes('gradeId') ? 'red' : 'inherit' },
+                      helperText={errors.gradeId ? 'Required field' : ''}
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          '&:hover fieldset': {
+                            borderColor: '#B71D18',
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: '#B71D18',
+                          },
+                        },
+                        '& .MuiInputLabel-root.Mui-focused': {
+                          color: '#B71D18',
+                        },
                       }}
                     />
                   )}
@@ -438,7 +504,7 @@ const SessionsFilter = ({
         )}
 
         {visibleFields.includes('studentName') && (
-          <Grid item xs={12} sm={4} md={3}>
+          <Grid size={{ xs: 4, sm: 4, md: 3 }}>
             <Controller
               name="studentName"
               control={control}
@@ -448,9 +514,9 @@ const SessionsFilter = ({
                   fullWidth
                   {...field}
                   label="Student Name"
-                  size="small"
+                  size="medium"
                   error={!!errors.studentName}
-                  helperText={errors.studentName ? '(Mandatory)' : ''}
+                  helperText={errors.studentName ? 'Required field' : ''}
                   onChange={(e) => {
                     field.onChange(e);
                     handleChange('studentName', e.target.value);
@@ -471,8 +537,18 @@ const SessionsFilter = ({
                       </InputAdornment>
                     ),
                   }}
-                  FormHelperTextProps={{
-                    style: { color: mandatoryKeys.includes('studentName') ? 'red' : 'inherit' },
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      '&:hover fieldset': {
+                        borderColor: '#B71D18',
+                      },
+                      '&.Mui-focused fieldset': {
+                        borderColor: '#B71D18',
+                      },
+                    },
+                    '& .MuiInputLabel-root.Mui-focused': {
+                      color: '#B71D18',
+                    },
                   }}
                 />
               )}
@@ -480,6 +556,7 @@ const SessionsFilter = ({
           </Grid>
         )}
       </Grid>
+      </Paper>
     </LocalizationProvider>
   );
 };

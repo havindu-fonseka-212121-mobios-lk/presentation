@@ -37,41 +37,71 @@ const DraggableCourse = ({ course, isInSession = false }) => {
       {...listeners}
       {...attributes}
       sx={{
-        mb: 1,
-        px: 2,
-        py: 1,
+        p: 2,
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        border:'1px solid #ccc',
-        borderRadius: '7px',
-        backgroundColor: isInSession ? '#fff' : '#fff',
+        flexDirection: 'column',
+        gap: 1,
+        border: '2px solid #e0e0e0',
+        borderRadius: '8px',
+        backgroundColor: '#fff',
         cursor: isDragging ? 'grabbing' : 'grab',
         opacity: isDragging ? 0.5 : 1,
         position: 'relative',
         overflow: 'hidden',
         touchAction: 'none',
-        // Modern color line from right corner
-        '&::after': {
+        transition: 'all 0.2s ease',
+        '&:hover': {
+          // borderColor: modeColor,
+          boxShadow: `0 4px 12px rgba(0, 0, 0, 0.1)`,
+          // transform: 'translateY(-2px)',
+        },
+        '&::before': {
           content: '""',
           position: 'absolute',
           top: 0,
-          right: 0,
-          width: '4px',
-          height: '100%',
-          bgcolor: modeColor,
-          // background: `linear-gradient(135deg, transparent 0%, transparent 30%, ${modeColor} 30%, ${modeColor} 100%)`,
-          borderTopRightRadius: '6px',
-          borderBottomRightRadius: '6px',
+          left: 0,
+          width: '100%',
+          height: '4px',
+          // bgcolor: modeColor,
         },
       }}
     >
-      <Typography variant="body2" sx={{ overflow: 'auto', scrollbarWidth: 'none' }}>
+      <Typography 
+        variant="body2" 
+        sx={{ 
+          fontWeight: 500,
+          fontSize: '0.875rem',
+          lineHeight: 1.4,
+          minHeight: '40px',
+          display: '-webkit-box',
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: 'vertical',
+          overflow: 'hidden',
+        }}
+      >
         {course?.name}
       </Typography>
-      <Typography variant="body2" sx={{ px: 2 }}>
-        {course?.studentCount}
-      </Typography>
+      <Box sx={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center',
+        pt: 1,
+        borderTop: '1px solid #f0f0f0'
+      }}>
+        <Typography variant="caption" sx={{ color: '#666', fontWeight: 500 }}>
+          Students:
+        </Typography>
+        <Typography 
+          variant="body2" 
+          sx={{ 
+            fontWeight: 'bold',
+            color: modeColor,
+            fontSize: '1rem'
+          }}
+        >
+          {course?.studentCount}
+        </Typography>
+      </Box>
     </Box>
   );
 };

@@ -1,8 +1,8 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import PrizeWinnersService from '../services/prize-winners.services';
 import SessionsFilter from './SessionsFilter';
 import AvailableCourses from './AvailableCourses';
-import PrizeWinnersService from '../services/prize-winners.services';
 
 const PrizeGivingCeremony = () => {
   const [triggerValidation, setTriggerValidation] = useState(false);
@@ -149,7 +149,7 @@ const PrizeGivingCeremony = () => {
   return (
     <Container maxWidth="xl">
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item size={12} mt={10}>
           <SessionsFilter
             handleDataChange={handleFilterChange}
             mandatoryKeys={mandatoryKeys}
@@ -160,16 +160,18 @@ const PrizeGivingCeremony = () => {
         </Grid>
       </Grid>
 
-      <Grid container spacing={2} mt={2}>
-        {configMode !== 'FREEZED' && <Grid item xs={3}>
-          <AvailableCourses
-            availableCourses={filteredAvailableCourses}
-            sessionCount={sessions.length}
-            loading={loadingCourses}
-            totalCourses={allCourses.length}
-          />
-        </Grid>}
-      </Grid>
+      {configMode !== 'FREEZED' && (
+        <Grid container spacing={2} mt={2}>
+          <Grid item size={12}>
+            <AvailableCourses
+              availableCourses={filteredAvailableCourses}
+              sessionCount={sessions.length}
+              loading={loadingCourses}
+              totalCourses={allCourses.length}
+            />
+          </Grid>
+        </Grid>
+      )}
 
     </Container>
   );
