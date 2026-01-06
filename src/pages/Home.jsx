@@ -20,7 +20,6 @@ const PrizeGivingCeremony = () => {
   const mandatoryKeys = ['examYear'];
 
   // controllers for aborting previous requests
-  const coursesAbortController = useRef(null);
   const sessionsAbortController = useRef(null);
   const configAbortController = useRef(null);
 
@@ -45,20 +44,13 @@ const PrizeGivingCeremony = () => {
   }, []);
 
 
-  // === FETCH COURSES with AbortController ===
+  // === FETCH COURSES ===
   const fetchCourses = async () => {
-    if (coursesAbortController.current) {
-      coursesAbortController.current.abort();
-      setAvailableCourses([]);
-    }
-    const controller = new AbortController();
-    coursesAbortController.current = controller;
-
     setLoadingCourses(true);
     try {
-      const response = await PrizeWinnersService.groupByCourse(filters, { signal: controller.signal });
+      const response = await PrizeWinnersService.groupByCourse(filters);
 
-      if (!controller.signal.aborted && response?.data?.data) {
+      if (response?.data?.data) {
         const mappedCourses = response.data.data.map((item) => {
           const { course, studentCount } = item;
           const { examinationMode, examinationType, grade } = course;
@@ -103,15 +95,10 @@ const PrizeGivingCeremony = () => {
         });
       }
     } catch (error) {
-      if (error.name !== "AbortError") {
-        console.error("Error fetching courses:", error);
-        // toast.error('Failed to fetch courses');
-      }
+      console.error("Error fetching courses:", error);
+      // toast.error('Failed to fetch courses');
     } finally {
-      // Only clear loading if this is still the active request
-      if (coursesAbortController.current === controller) {
-        setLoadingCourses(false);
-      }
+      setLoadingCourses(false);
     }
   };
 
@@ -143,7 +130,6 @@ const PrizeGivingCeremony = () => {
   useEffect(() => () => {
     try { configAbortController.current?.abort(); } catch { /* ignore */ }
     try { sessionsAbortController.current?.abort(); } catch { /* ignore */ }
-    try { coursesAbortController.current?.abort(); } catch { /* ignore */ }
   }, []);
 
   return (
